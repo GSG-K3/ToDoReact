@@ -10,11 +10,6 @@ class ToDoList extends Component {
     };
   }
   render() {
-    //     let todoItems = this.state.todos.map(todo => {
-    //       return (
-    //         <ToDoItem key={todo.id} task={todo.task} completed={todo.completed} />
-    //       );
-    //     });
     return (
       <div>
         <ToDoItem />

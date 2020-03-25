@@ -6,8 +6,7 @@ function ToDoTasks(props) {
         <label>
           <input
             type="checkbox"
-            name="checked"
-            checked={props.handleChange}
+            name="completed"
             onChange={props.handleChange}
           />
         </label>
