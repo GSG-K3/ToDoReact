@@ -7,50 +7,51 @@ class ToDoItem extends Component {
     super();
     this.state = {
       todos: todoData,
-      id: 4,
       task: '',
-      checked: false
+      completed: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
   handleSubmit(event) {
     event.preventDefault();
+    console.log('farah');
     let lastId = this.state.todos.slice(-1)[0].id;
-    this.setState(prevState => {
-      return prevState.todos.push({
-        id: lastId + 1,
-        task: this.state.task,
-        checked: this.state.checked
-      });
-      console.log(this.state.todos[4].id);
+    lastId += 1;
+    this.setState({
+      todos: [
+        ...this.state.todos,
+        {
+          id: lastId,
+          task: this.state.task,
+          completed: this.state.completed
+        }
+      ]
     });
   }
 
   handleChange(event) {
     const { name, value, type, checked } = event.target;
     type === 'checkbox'
-      ? this.setState({ [name]: checked })
+      ? this.setState({ [name]: !checked })
       : this.setState({ [name]: value });
   }
   render() {
-    let updateState = this.state.todos.map(item => {
-      return (
-        <ToDoTasks key={item.id} data={item} handleChange={this.handleChange} />
-      );
-    });
     return (
       <div className="todoForm">
         <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            name="task"
-            value={this.state.task}
-            onChange={this.handleChange}
-          />
+          <input type="text" name="task" onChange={this.handleChange} />
           <button>Add</button>
         </form>
-        <p>{updateState}</p>
+        <p>
+          {this.state.todos.map(item => (
+            <ToDoTasks
+              key={item.id}
+              data={item}
+              handleChange={this.handleChange}
+            />
+          ))}
+        </p>
       </div>
     );
   }
