@@ -39,7 +39,6 @@
 
 .todoForm {
   position: relative;
-  margin-top: 28%;
   margin-left: 19%;
   border: 1px solid darkgrey;
   width: 533px;
@@ -71,7 +70,7 @@
   text-decoration: none;
   display: inline-block;
   font-size: 25px;
-  margin: 4px 2px;
+  margin: 4px 0px 4px 10px;
   cursor: pointer;
   font-family: fantasy;
   font-weight: 800;
@@ -86,4 +85,17 @@
 
 .tasks input {
   width: unset;
+}
+
+.header {
+  width: fit-content;
+}
+
+.header h1 {
+  background-color: coral;
+  color: white;
+  font-size: 66px;
+  padding: 7px;
+  margin-left: 104%;
+  width: 466px;
 }
