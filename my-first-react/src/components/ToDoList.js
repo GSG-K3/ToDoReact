@@ -12,6 +12,9 @@ class ToDoList extends Component {
   render() {
     return (
       <div>
+        <div className="header">
+          <h1>You can Do it !</h1>
+        </div>
         <ToDoItem />
       </div>
     );
