@@ -7,17 +7,18 @@ class ToDoItem extends Component {
     super();
     this.state = {
       todos: todoData,
+      id: 0,
       task: '',
       completed: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
   handleSubmit(event) {
     event.preventDefault();
-    console.log('farah');
-    let lastId = this.state.todos.slice(-1)[0].id;
-    lastId += 1;
+    let lastId = this.state.id + 1;
+
     this.setState({
       todos: [
         ...this.state.todos,
@@ -36,6 +37,11 @@ class ToDoItem extends Component {
       ? this.setState({ [name]: !checked })
       : this.setState({ [name]: value });
   }
+  handleDelete(index, event) {
+    const todo = Object.assign([], this.state.todos);
+    todo.splice(index, 1);
+    this.setState({ todos: todo });
+  }
   render() {
     return (
       <div className="todoForm">
@@ -44,11 +50,12 @@ class ToDoItem extends Component {
           <button>Add</button>
         </form>
         <p>
-          {this.state.todos.map(item => (
+          {this.state.todos.map((item, index) => (
             <ToDoTasks
               key={item.id}
               data={item}
               handleChange={this.handleChange}
+              deleteChange={this.handleDelete.bind(this, index)}
             />
           ))}
         </p>

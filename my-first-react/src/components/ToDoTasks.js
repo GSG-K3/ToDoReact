@@ -18,7 +18,7 @@ function ToDoTasks(props) {
         <button>Edit</button>
       </div>
       <div>
-        <button>Delete</button>
+        <button onClick={props.deleteChange}>Delete</button>
       </div>
     </div>
   );
