@@ -7,12 +7,12 @@ const todoData = [
   {
     id: 1,
     task: 'Cleaning the House',
-    completed: true
+    completed: false
   },
   {
     id: 2,
     task: 'Do my home Work',
-    completed: true
+    completed: false
   }
 ];
 

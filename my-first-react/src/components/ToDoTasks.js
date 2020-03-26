@@ -1,21 +1,22 @@
 import React from 'react';
 function ToDoTasks(props) {
+  const style = {
+    fontSize: 15,
+    color: 'red',
+    textDecoration: 'underline overline'
+  };
   return (
     <div className="tasks">
       <div>
         <label>
-          <input
-            type="checkbox"
-            name="completed"
-            onChange={props.handleChange}
-          />
+          <input type="checkbox" name="completed" onChange={props.handlemark} />
         </label>
       </div>
       <div>
-        <p>{props.data.task}</p>
+        <p style={props.data.completed ? style : null}>{props.data.task}</p>
       </div>
       <div>
-        <button>Edit</button>
+        <button onClick={props.handleEdit}>Edit</button>
       </div>
       <div>
         <button onClick={props.deleteChange}>Delete</button>
