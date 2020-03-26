@@ -14,10 +14,14 @@ class ToDoItem extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
+    this.handlemark = this.handlemark.bind(this);
   }
+
   handleSubmit(event) {
     event.preventDefault();
-    let lastId = this.state.id + 1;
+    let lastId = this.state.todos.length - 1;
+    lastId++;
 
     this.setState({
       todos: [
@@ -42,6 +46,18 @@ class ToDoItem extends Component {
     todo.splice(index, 1);
     this.setState({ todos: todo });
   }
+  handleEdit(index, event) {}
+  handlemark(index, event) {
+    let todomark = this.state.todos.map(item => {
+      if (index === item.id) {
+        item.completed = !item.completed;
+      }
+
+      return item;
+    });
+
+    this.setState({ todos: todomark });
+  }
   render() {
     return (
       <div className="todoForm">
@@ -56,6 +72,8 @@ class ToDoItem extends Component {
               data={item}
               handleChange={this.handleChange}
               deleteChange={this.handleDelete.bind(this, index)}
+              handleEdit={this.handleEdit.bind(this, index)}
+              handlemark={this.handlemark.bind(this, index)}
             />
           ))}
         </p>
